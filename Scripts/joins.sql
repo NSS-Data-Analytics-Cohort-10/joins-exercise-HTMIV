@@ -144,12 +144,12 @@ SELECT * FROM DISTRIBUTORS LIMIT 100;
 /*
 How many movies in the dataset are distributed by a company which is not headquartered in California?
 */
-SELECT SUM(COUNTS) 
+SELECT
+SUM(COUNTS) 
 FROM 
 (SELECT
-    UPPER(S.film_title) film_title
-    count(distinct(S.movie_id)) COUNTS,
-    
+    UPPER(S.film_title) film_title,
+    count(distinct(S.movie_id)) COUNTS
 FROM
     Specs S
 	LEFT OUTER JOIN distributors D ON D.distributor_id = S.domestic_distributor_id 
